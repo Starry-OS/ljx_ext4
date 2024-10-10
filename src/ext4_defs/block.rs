@@ -62,7 +62,11 @@ impl Block {
 
     /// Write block data to `offset` with `size`.
     pub fn write_offset(&mut self, offset: usize, data: &[u8]) {
-        self.data[offset..offset + data.len()].copy_from_slice(data);
+        if offset + data.len() <= BLOCK_SIZE {
+            self.data[offset..offset + data.len()].copy_from_slice(data);
+        } else {
+            log::error!("Array index out of bounds: offset = {}, size = {}, array length = {}", offset, data.len(), self.data.len());
+        }
     }
 
     /// Transform `T` to bytes and write it to `offset`.

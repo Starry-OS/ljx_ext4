@@ -95,7 +95,7 @@ impl BlockCache {
 
     /// Read a block.
     pub fn read_block(&self, block_id: PBlockId) -> Block {
-        debug!("Reading block {}", block_id);
+        //debug!("Reading block {}", block_id);
         let set_id = block_id as usize % CACHE_SIZE;
         let mut cache = self.cache.lock();
         let slot_id = cache[set_id].access(block_id) as usize;
@@ -112,7 +112,7 @@ impl BlockCache {
                 slot.dirty = false;
             }
             // Read block from disk
-            debug!("Loading block {} from disk", block_id);
+            //debug!("Loading block {} from disk", block_id);
             let block = self.block_dev.read_block(block_id);
             slot.block = block.clone();
             slot.valid = true;
