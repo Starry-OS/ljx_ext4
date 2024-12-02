@@ -6,8 +6,7 @@ edition = "2021"
 [dependencies]
 bitflags = "2.2.1"
 log = "0.4"
-axsync = { git = "https://github.com/Starry-OS/axsync.git", optional = true }
-
+spin = { version = "0.9", optional = true }
 [features]
-block_cache = ["dep:axsync"]
+block_cache = ["dep:spin"]
 fuser_root_inode = []

@@ -4,7 +4,7 @@ use crate::constants::*;
 use crate::prelude::*;
 use crate::Block;
 use crate::BlockDevice;
-use axsync::Mutex;
+use spin::Mutex;
 
 /// Write-back cache slot.
 #[derive(Debug, Clone, Copy, Default)]
